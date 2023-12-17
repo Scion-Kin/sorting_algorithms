@@ -33,7 +33,7 @@ void bubble_sort(int *array, size_t size)
 		}
 
 		/* Print the array after each pass if any swaps occurred */
-		if (swapped)
+		if (swapcheck)
 		{
 			printf("%d", array[0]);
 			for (j = 1; j < size; j++)
