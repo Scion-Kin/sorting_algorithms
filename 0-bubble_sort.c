@@ -40,5 +40,9 @@ void bubble_sort(int *array, size_t size)
 				printf(", %d", array[j]);
 			printf("\n");
 		}
+
+		/* If no swaps occur, the array is already sorted. Break the loop. */
+		else
+			break;
 	}
 }
