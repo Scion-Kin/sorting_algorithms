@@ -1,33 +1,45 @@
 #include "sort.h"
 
 /**
- * insertion_sort_list - this is an insertion sort algorithm
- * to sort a doubly linked list
- * @list: the list to be sorted
+ * insertion_sort_list - an insertion sort algorithm for a doubly linked list
+ * @list: A pointer to the head of the doubly linked list
  * Return: Nothing
-*/
+ */
 
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *nextn = (*list)->next;
-	listint_t *swap_point, *current;
+	listint_t *current, *prev, *nextn;
 
 	if (!list || !(*list) || !(*list)->next)
 		return;
 
-	while (nextn->next != NULL)
+	current = (*list)->next;
+
+	while (current != NULL)
 	{
-		current = nextn;
-		while (nextn->prev != NULL && nextn->n < nextn->prev->n)
+		nextn = current->next;
+
+		while (current->prev != NULL && current->n < current->prev->n)
 		{
-			swap_point = nextn->prev;
-			swap_point->prev = nextn->prev;
-			swap_point->next = nextn->next;
-			nextn->prev = nextn;
-			nextn = swap_point;
-			nextn = nextn->prev;
+			prev = current->prev;
+
+			if (current->next)
+				current->next->prev = prev;
+
+			prev->next = current->next;
+			current->next = prev;
+
+			if (prev->prev)
+				prev->prev->next = current;
+
+			current->prev = prev->prev;
+			prev->prev = current;
+
+			if (!current->prev)
+				*list = current;
+
 			print_list(*list);
 		}
-		nextn = current->next;
+		current = nextn;
 	}
 }
