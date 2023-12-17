@@ -10,25 +10,25 @@
 void bubble_sort(int *array, size_t size)
 {
 	size_t i, j;
-	int temp;
-	int swapped; /* Flag to check if any swaps occurred in a pass */
+	int holder;
+	int swapcheck; /* Flag to check if any swaps occurred in a pass */
 
-	if (!array || size == 0)
+	if (!array || size < 2)
 		return;
 
 	for (i = 0; i < size - 1; i++)
 	{
-		swapped = 0; /* Reset the flag at the beginning of each pass */
+		swapcheck = 0; /* Reset the flag at the beginning of each pass */
 
 		for (j = 0; j < size - 1 - i; j++)
 		{
 			if (array[j] > array[j + 1])
 			{
 				/* Swap elements */
-				temp = array[j];
+				holder = array[j];
 				array[j] = array[j + 1];
-				array[j + 1] = temp;
-				swapped = 1; /* Set the flag since a swap occurred */
+				array[j + 1] = holder;
+				swapcheck = 1; /* Set the flag since a swap occurred */
 			}
 		}
 
