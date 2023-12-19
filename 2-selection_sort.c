@@ -11,7 +11,7 @@
 
 void selection_sort(int *array, size_t size)
 {
-	size_t i, j, low, high;
+	size_t i, j;
 	int lowest, temp;
 
 	if ((size < 2) || (array == NULL))
@@ -19,22 +19,18 @@ void selection_sort(int *array, size_t size)
 
 	for (i = 0; i < size - 1; i++)
 	{
-		high = i;
+		lowest = i;
 		for (j = i + 1; j < size; j++)
 		{
-			if ((array[j] < array[high]) && (lowest == 0))
+			if (array[j] <= array[lowest])
 			{
-				low = j;
-				lowest = array[j];
+				lowest = j;
 			}
-			else if (array[j] < lowest)
-				low = j;
 		}
-		temp = array[high];
-		array[high] = array[low];
-		array[low] = temp;
-		lowest = 0;
-		if (temp != array[high])
+		temp = array[i];
+		array[i] = array[lowest];
+		array[lowest] = temp;
+		if (temp != array[i]) /* check if swap took place and print */
 			print_array(array, size);
 	}
 }
