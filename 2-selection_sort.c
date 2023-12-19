@@ -3,7 +3,6 @@
 /**
  * selection_sort- sorts an array using the selection
  * sort algorithm
- *
  * @array: unsorted array
  * @size: the size of the array
  *
@@ -12,25 +11,25 @@
 void selection_sort(int *array, size_t size)
 {
 	size_t i, j;
-	int lowest, temp;
+	int min, holder;
 
 	if ((size < 2) || (array == NULL))
 		return;
 
 	for (i = 0; i < size - 1; i++)
 	{
-		lowest = i;
+		min = i;
 		for (j = i + 1; j < size; j++)
 		{
-			if (array[j] <= array[lowest])
+			if (array[j] <= array[min])
 			{
-				lowest = j;
+				min = j;
 			}
 		}
-		temp = array[i];
-		array[i] = array[lowest];
-		array[lowest] = temp;
-		if (temp != array[i]) /* check if swap took place and print */
+		holder = array[i];
+		array[i] = array[min];
+		array[min] = holder;
+		if (holder != array[i]) /* check if swap took place and print */
 			print_array(array, size);
 	}
 }
