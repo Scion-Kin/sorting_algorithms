@@ -51,7 +51,8 @@ void swap(int *a, int *b)
  */
 size_t partition(int *array, size_t size, int pivot)
 {
-	int i = 0, j = 0;
+	int j = 0;
+	size_t i = 0;
 
 	for (i = 0; i < size - 1; i++)
 	{
